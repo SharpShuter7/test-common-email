@@ -82,4 +82,40 @@ public class EmailTest {
 		assertEquals( 1, email.getReplyToAddresses().size());
 		
 	}
+
+	@Test
+	public void testBuildMimeMessage() throws EmailException {
+		
+		Date sentDate = new Date(03/17/2021);
+		
+		Properties properties = new Properties();  
+		
+		email.setHostName("localhost");
+		email.setSmtpPort(1234);
+		email.setDebug(false);
+		
+		Authenticator newAuthenticator = new DefaultAuthenticator("abc@a.org", "password");
+		email.setAuthenticator(newAuthenticator);
+		
+		email.setSSLOnConnect(true);
+		email.setBounceAddress("test@ac.org");
+		
+		javax.mail.Session session = javax.mail.Session.getInstance(properties,null);  
+		
+		email.setSentDate(sentDate);
+		email.addBcc(TEST_EMAILS[0]);
+		email.addCc(TEST_EMAILS[1]);
+		email.addHeader("Bob", "Professor");
+		email.setFrom(TEST_EMAILS[2]);
+		email.addReplyTo(TEST_EMAILS[1], "John");
+		email.setSocketConnectionTimeout(3);
+		email.setBounceAddress(TEST_EMAILS[0]);
+		email.addTo("a@bc.org");
+		email.setCharset("ISO-8859-1");
+		email.setContent("test content", "text/plain");
+		email.setSubject("mysubject");
+		
+		email.buildMimeMessage();
+		
+	}
 }
