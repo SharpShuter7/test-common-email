@@ -165,4 +165,11 @@ public class EmailTest {
 		assertEquals(hostName, gottenHostName);
 		
 	}
+
+	@Test
+	public void testGetHostNameBad() throws Exception {
+		
+		assertEquals(null, email.getHostName());
+		
+	}
 }
