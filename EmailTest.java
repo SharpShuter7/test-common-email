@@ -229,4 +229,18 @@ public class EmailTest {
 		
 		assertEquals(mailSession, gottenMailSession);
 	}
+
+	@Test
+	public void testGetSentDate() throws Exception { // test with date
+		
+		Date sentDate = new Date(03/17/2021);
+		Date gottenSentDate;
+		
+		email.setSentDate(sentDate);
+		
+		gottenSentDate = email.getSentDate();
+		
+		assertEquals(sentDate, gottenSentDate);
+		
+	}
 }
