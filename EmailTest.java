@@ -64,4 +64,13 @@ public class EmailTest {
 		assertEquals("Professor", email.headers.get("Bob"));
 		
 	}
+
+	@Test (expected = IllegalArgumentException.class) //show the exception was thrown for null name
+	public void testAddHeaderBadName() throws Exception {
+		
+		email.addHeader(null, "Value");
+		
+		assertEquals("Value", email.headers.get(null));
+		
+	}
 }
