@@ -202,4 +202,31 @@ public class EmailTest {
 		assertEquals(mailSession, gottenMailSession); 
 		
 	}
+
+	@Test
+	public void testGetEmailSessionNoHost() throws EmailException {
+		
+		String username = TEST_EMAILS[0];
+		String password = "password";
+		
+		Properties props = new Properties();
+		
+		Authenticator Authenticator = new DefaultAuthenticator(username, password);
+		
+		email.setAuthenticator(Authenticator);
+		
+		javax.mail.Session mailSession = javax.mail.Session.getInstance(props, email.authenticator);
+		javax.mail.Session gottenMailSession;
+
+		email.setDebug(false);
+		email.setSocketConnectionTimeout(3);
+		email.setBounceAddress(TEST_EMAILS[0]);
+		email.setSocketTimeout(3);
+		email.isSSLOnConnect();
+		email.setMailSession(mailSession);
+		
+		gottenMailSession = email.getMailSession();
+		
+		assertEquals(mailSession, gottenMailSession);
+	}
 }
