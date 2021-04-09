@@ -6,3 +6,4 @@ jdk:
 
 script: - mvn clean install
 
+ss
