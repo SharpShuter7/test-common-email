@@ -7,4 +7,4 @@ jdk:
 script:
     - mvn clean install
 
-dist: trusty
+dist: trust
