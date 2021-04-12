@@ -4,7 +4,4 @@ jdk:
     - openjdk8
     - openjdk7
 
-script: 
-    - mvn clean install
-
 dist: trusty
